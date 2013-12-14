@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="Styles/fullcalendar.css" type="text/css"/>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
+   
+
 </head>
 <body>
     <form id="Form1" runat="server">
@@ -101,7 +103,37 @@
 		    
 		</ul>
 
-            <ul class="nav navbar-nav pull-right">
+            <ul class="nav navbar-nav pull-right loggedin" style="display:none">
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="javascript:;">
+		        	Hi, <asp:Label ID="usernameSite" runat="server" Text="Label"></asp:Label>
+		        	<span class="caret"></span>
+		    	</a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">
+			        		
+			        		&nbsp;&nbsp;My Profile
+			        	</a>
+                        </li>
+                        <li>
+                            <a href="#">
+			        		
+			        		&nbsp;&nbsp;Settings
+			        	</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <asp:Button ID="Logout" runat="server" Text="Logout" Style="width: 100%;" OnClick="Logout_Click"/>
+			        	</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav pull-right loggedout">
                 <li class="dropdown">
                     <a data-toggle="modal" id="loginId">
 		        	Login
@@ -129,6 +161,19 @@
 	<script type="text/javascript" src="Scripts/fullcalendar.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="Scripts/custom.js"></script>
+         <script type="text/javascript">
+
+             var loginUser = '<%=Session["user_name"]%>';
+             if (loginUser.length != 0) {
+                 $("#usernameSite").html(loginUser);
+                 $(".loggedin").show();
+                 $(".loggedout").hide();
+             } else {
+                 $(".loggedin").hide();
+                 $(".loggedout").show();
+             }
+
+    </script>
 
     </form>
 </body>

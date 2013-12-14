@@ -11,6 +11,15 @@ public partial class Registeration : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["user_id"] != null)
+        {
+            //username.Text = Session["user_id"].ToString();
+        }
+    }
+    protected void Logout_Click(object sender, EventArgs e)
+    {
+        Session.Clear();
+        Response.Redirect("../default.aspx");
 
     }
     protected void Button1_Click(object sender, EventArgs e)

@@ -104,7 +104,11 @@
 
         </div>
         <script type="text/javascript">
-            
+            function sessiondisplay() {
+
+                var dis = '<%=Session["user_name"]%>';
+                alert(dis);
+            }
 
             function validate() {
 

@@ -1,13 +1,6 @@
 $(document).ready(function() {
 var calender = $("#tennisCalendar, #climbingCalendar, #aerobicsCalendar, #danceCalendar, #racketCalendar, #batmintonCalendar");
 
-
-
-    var dis = '<%=Session["user_name"]%>';
-    alert(dis);
-
-
-
 calender.fullCalendar({
 		header: {
 				left: 'prev,next today',

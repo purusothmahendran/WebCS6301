@@ -17,6 +17,32 @@
 <body>
     <form id="Form1" runat="server">
 	
+        
+	        <div id="loginWrapper">
+            <div class="user-icon"></div>
+            <div class="pass-icon"></div>
+            <div name="login-form" class="login-form" action="" method="post">
+                <div class="header">
+                     <h1>Login Form</h1>
+ <span>Please enter your credentials below to login.</span>
+	<span class="error"></span>
+
+                </div>
+                <div class="content">
+                    <asp:TextBox ID="username"  class="input username" value="Username"  runat="server"></asp:TextBox>
+                    <asp:TextBox ID="password" class="input password" value="Password" TextMode="password" runat="server"></asp:TextBox><br />
+
+                    <span class="reg"><a href="Registeration.aspx">Click here to register</a></span>
+                </div>
+                <div class="footer">
+                                <asp:Button ID="Button1" runat="server" Text="Login" CssClass="button validate" OnClick="Button1_Click" />
+
+                </div>
+            </div>
+            
+        </div>
+	
+	<div class="gradient" ></div>
 	
 <div id="openModal" class="modalDialog">
 	<div>
@@ -68,7 +94,7 @@
 			</li>
 
 			<li class="dropdown">
-		    	<a class="dropdown-toggle" href="Resource.aspx">
+		    	<a class="dropdown-toggle" href="../Resource/Resource.aspx">
 		        	Resource <span class="caret"></span>
 		    	</a>
 
@@ -101,10 +127,11 @@
 			</li>
 		    
 		</ul>
-            <ul class="nav navbar-nav pull-right">
+            
+            <ul class="nav navbar-nav pull-right loggedin" style="display:none">
                 <li class="dropdown">
                     <a data-toggle="dropdown" href="javascript:;">
-		        	Hi, <asp:Label ID="username" runat="server" Text="Label"></asp:Label>
+		        	Hi, <asp:Label ID="usernameEvent" runat="server" Text="Label"></asp:Label>
 		        	<span class="caret"></span>
 		    	</a>
 
@@ -131,6 +158,16 @@
                 </li>
             </ul>
 
+            <ul class="nav navbar-nav pull-right loggedout">
+                <li class="dropdown">
+                    <a data-toggle="modal" id="loginId">
+		        	Login
+		    	</a>
+
+                    
+                </li>
+            </ul>
+
         </nav>
 	
 	
@@ -148,6 +185,18 @@
     <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../Scripts/fullcalendar.min.js"></script>
 	<script type="text/javascript" src="../Scripts/custom.js"></script>
+        <script type="text/javascript">
+            var loginUser = '<%=Session["user_name"]%>';
+            if (loginUser.length != 0) {
+                $("#usernameEvent").html(loginUser);
+                $(".loggedin").show();
+                $(".loggedout").hide();
+            } else {
+                $(".loggedin").hide();
+                $(".loggedout").show();
+            }
+
+    </script>
     </form>
 </body>
 </html>
