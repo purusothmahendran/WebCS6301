@@ -1,0 +1,154 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Event.master.cs" Inherits="Events_Event" %>
+
+<!DOCTYPE html>
+<html>
+<head id="Head1" runat="server">
+    <title>Web Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+
+    <link rel="stylesheet" href="../Styles/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../Styles/style.css" type="text/css" />
+    <link rel="stylesheet" href="../Styles/fullcalendar.css" type="text/css"/>
+  
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+	
+	
+<div id="openModal" class="modalDialog">
+	<div>
+		<span title="Close" class="close">X</span>
+		<h2 id="eventTitle"></h2>
+        <hr />
+        <div class="modalTable">
+        <span>Description</span>
+		<span id="eventDescription"></span>
+        </div>
+        <div class="modalTable">
+        <span>Where</span>
+		<span id="eventWhere"></span>
+        </div>
+
+        <div class="modalTable">
+        <span>RSVP</span>
+		<span id="eventRSVP">
+        <input type="radio" value="Attending" name="RSVP" /><label>Attending</label>
+        <input type="radio" value="Maybe" name="RSVP" /><label>Maybe</label>
+        <input type="radio" value="Not Attending" name="RSVP" /><label>Not Attending</label>
+        </span>
+        </div>
+        <hr />
+        <div id="eventButton"><a href="javascript:void(0);" class="btn btn-primary saveRSVP">Save</a></div>
+	</div>
+</div>
+	
+	
+	
+	
+	
+    <div class="wrapper">
+<h1 id="site-logo">
+			<a href="../Default.aspx">
+				<img src="../img/logo.png" alt="Site Logo">
+			</a>
+		</h1>
+
+        <header id="header">
+        </header>
+        <!-- header -->
+	    <nav id="top-bar">
+        <ul class="nav navbar-nav pull-left">
+			<li class="">
+				<a href="../Default.aspx"> 
+					Home
+				</a>
+			</li>
+
+			<li class="dropdown">
+		    	<a class="dropdown-toggle" href="Resource.aspx">
+		        	Resource <span class="caret"></span>
+		    	</a>
+
+		    	<ul class="dropdown-menu" role="menu">
+			        <li><a href="../Resource/Tennis.aspx">Tennis</a></li>
+			        <li><a href="../Resource/Batminton.aspx">Batminton</a></li>
+			        <li><a href="../Resource/Racket.aspx">Racket Ball</a></li>
+                    <li><a href="../Resource/Dance.aspx">Dance Room</a></li>
+                    <li><a href="../Resource/Aerobics.aspx">Aerobics Room</a></li>
+                    <li><a href="../Resource/Climbing.aspx">Wall Climbing</a></li>
+		    	</ul>
+		    </li>
+            <li class="dropdown">
+		    	<a class="dropdown-toggle" href="../Events/Event.aspx">
+		        	Events <span class="caret"></span>
+		    	</a>
+
+		    	<ul class="dropdown-menu" role="menu">
+			        <li><a href="Outdoor.aspx">Outdoor Sports</a></li>
+			        <li><a href="Indoor.aspx">Indoor Sports</a></li>
+			        <li><a href="Theatre.aspx">Theatre</a></li>
+                    <li><a href="Workshops.aspx">Workshops</a></li>
+                    <li><a href="Creation.aspx">Create Events</a></li>
+		    	</ul>
+		    </li>
+            <li class="">
+				<a href="../FAQ.aspx"> 
+					FAQ
+				</a>
+			</li>
+		    
+		</ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="javascript:;">
+		        	Hi, <asp:Label ID="username" runat="server" Text="Label"></asp:Label>
+		        	<span class="caret"></span>
+		    	</a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">
+			        		
+			        		&nbsp;&nbsp;My Profile
+			        	</a>
+                        </li>
+                        <li>
+                            <a href="#">
+			        		
+			        		&nbsp;&nbsp;Settings
+			        	</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <asp:Button ID="Logout" runat="server" Text="Logout" Style="width: 100%;" OnClick="Logout_Click"/>
+			        	</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </nav>
+	
+	
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+  
+    </div>
+<footer id="footer">
+    
+                Copyright © 2013
+        
+    </footer>
+    <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../Scripts/fullcalendar.min.js"></script>
+	<script type="text/javascript" src="../Scripts/custom.js"></script>
+    </form>
+</body>
+</html>
+
